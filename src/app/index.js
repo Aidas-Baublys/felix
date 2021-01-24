@@ -1,14 +1,12 @@
-import { Button } from "./components";
+import { Button, Layout } from "./components";
 
 import "./index.scss";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <Layout>
       <h1>Here goes our app</h1>
       <Button>Example Button</Button>
-    </div>
+    </Layout>
   );
 }
-
-export default App;
