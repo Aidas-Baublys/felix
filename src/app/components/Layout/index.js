@@ -1,6 +1,4 @@
-import Header from "./Header";
-import Main from "./Main";
-import Footer from "./Footer";
+import { Header, Footer } from "../../components";
 
 import "./index.scss";
 
@@ -8,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <div className="App">
       <Header></Header>
-      <Main>{children}</Main>
+      <main>{children}</main>
       <Footer></Footer>
     </div>
   );

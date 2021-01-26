@@ -1,12 +1,16 @@
-import { Button, Layout } from "./components";
+import { Layout, Hero, Button, ContentBox } from "./components";
 
 import "./index.scss";
 
 export default function App() {
   return (
     <Layout>
-      <h1>Here goes our app</h1>
-      <Button>Example Button</Button>
+      <Hero title="More binge?">
+        <Button>Get Access</Button>
+      </Hero>
+      <ContentBox>
+        <Button>Favorite</Button>
+      </ContentBox>
     </Layout>
   );
 }

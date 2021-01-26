@@ -1,7 +1,5 @@
 import "./index.scss";
 
-function Button({ children }) {
+export default function Button({ children }) {
   return <button className="Button">{children}</button>;
 }
-
-export default Button;

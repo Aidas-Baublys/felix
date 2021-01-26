@@ -1,0 +1,14 @@
+@import "../../../variables";
+
+.movie-card {
+  width: 100px;
+  background: gray;
+  overflow: hidden;
+
+  .movie-card--img {
+    width: 100%;
+  }
+}
+
+.movie-card--name {
+}

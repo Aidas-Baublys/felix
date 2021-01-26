@@ -1,1 +1,14 @@
 @import "../../../../variables";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background: black;
+}
+
+.logo {
+  color: #d22f27;
+  font-size: xx-large;
+  font-weight: bold;
+}

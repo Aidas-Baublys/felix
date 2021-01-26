@@ -1,0 +1,28 @@
+@import "../../../variables";
+
+.hero {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+
+  .hero--img {
+    width: 100%;
+  }
+}
+
+.hero--title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: aliceblue;
+  font-size: xxx-large;
+  font-weight: bold;
+}
+
+.hero--button {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
