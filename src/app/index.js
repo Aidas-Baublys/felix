@@ -8,9 +8,10 @@ export default function App() {
       <Hero title="More binge?">
         <Button>Get Access</Button>
       </Hero>
-      <ContentBox>
+      <ContentBox poster="" name="" description="">
         <Button>Favorite</Button>
       </ContentBox>
+      <Button style="margin">More Binge</Button>
     </Layout>
   );
 }

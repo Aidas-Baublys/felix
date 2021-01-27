@@ -5,7 +5,9 @@ export default function Header() {
   return (
     <nav className="nav">
       <div className="logo">F</div>
-      <Button>Sign In</Button>
+      <div>
+        <Button>Sign In</Button>
+      </div>
     </nav>
   );
 }

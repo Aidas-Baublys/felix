@@ -1,10 +1,19 @@
 @import "../../../variables";
 
-.Button {
+@mixin button($margin) {
   background: $red;
   color: aliceblue;
   border-radius: 4px;
   padding: 10px 30px;
   font-size: 16px;
   border: 1px solid $red;
+  margin: $margin;
+}
+
+.button {
+  @include button(0);
+}
+
+.button--margin {
+  @include button(20px);
 }

@@ -1,5 +1,7 @@
 import "./index.scss";
 
-export default function Button({ children }) {
-  return <button className="Button">{children}</button>;
+export default function Button({ style, children }) {
+  const className = style ? `button--${style}` : "button";
+
+  return <button className={className}>{children}</button>;
 }

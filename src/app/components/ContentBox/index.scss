@@ -1,14 +1,28 @@
 @import "../../../variables";
 
 .movie-card {
-  width: 100px;
+  width: 300px;
+  margin: 10px;
   background: gray;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 
-  .movie-card--img {
+  &--img {
     width: 100%;
   }
 }
 
 .movie-card--name {
+  padding: 10px;
+  font-weight: bold;
+}
+
+.movie-card--description {
+  padding: 0 10px 10px;
+}
+
+.movie-card--button {
+  padding: 10px;
 }
