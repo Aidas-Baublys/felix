@@ -6,7 +6,7 @@ export default function Layout({ children }) {
   return (
     <div className="App">
       <Header></Header>
-      <main>{children}</main>
+      {children}
       <Footer></Footer>
     </div>
   );

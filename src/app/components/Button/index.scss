@@ -17,3 +17,7 @@
 .button--margin {
   @include button(20px);
 }
+
+.selected {
+  background: black;
+}
