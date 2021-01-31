@@ -2,16 +2,23 @@
 
 .movie-card {
   width: 300px;
-  margin: 10px;
   background: gray;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
 
-  &--img {
-    width: 100%;
+  &--button {
+    margin: 10px;
   }
+}
+
+.movie-card--box {
+  text-align: left;
+}
+
+.movie-card--img {
+  width: 100%;
 }
 
 .movie-card--name {
@@ -21,8 +28,4 @@
 
 .movie-card--description {
   padding: 0 10px 10px;
-}
-
-.movie-card--button {
-  padding: 10px;
 }

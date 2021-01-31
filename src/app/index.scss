@@ -1,7 +1,14 @@
 @import "../variables";
 
 .App {
-  min-height: 100vh;
   background-color: $gray;
   text-align: center;
+}
+
+.movie-box {
+  padding: 48px 55px;
+  gap: 48px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
