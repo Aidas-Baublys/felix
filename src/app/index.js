@@ -1,7 +1,8 @@
 import { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Layout } from "./components";
-import Home from "./pages/Home";
+import { Home, Login } from "./pages";
 
 import "./index.scss";
 
@@ -25,9 +26,21 @@ export default class App extends Component {
     const { favorites } = this.state;
 
     return (
-      <Layout>
-        <Home favorites={favorites} toggleFavorite={this.toggleFavorite} />
-      </Layout>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <Home
+                favorites={favorites}
+                toggleFavorite={this.toggleFavorite}
+              />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </Layout>
+      </Router>
     );
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from "react";
 
-import { Hero, Button, ContentBox } from "../components";
+import { Hero, Button, ContentBox } from "../../components";
+
+import "./index.scss";
 
 export default class Home extends Component {
   state = {
@@ -42,7 +44,7 @@ export default class Home extends Component {
     return (
       <main>
         <Hero title="MORE BINGE?">
-          <Button>Get Access</Button>
+          <Button to="/login">Get Access</Button>
         </Hero>
         <section className="movie-box">
           {isLoading && <p>Loading...</p>}
@@ -58,14 +60,16 @@ export default class Home extends Component {
                 onClick={() => {
                   toggleFavorite(id);
                 }}
-                isSelected={favorites.includes(id) ? "selected" : ""}
+                isSelected={favorites.includes(id) ? " selected" : ""}
               >
                 {favorites.includes(id) ? "Remove" : "Favorite"}
               </Button>
             </ContentBox>
           ))}
         </section>
-        <Button style="margin">More Binge</Button>
+        <div className="button-box">
+          <Button to="/login">More Binge</Button>
+        </div>
       </main>
     );
   }

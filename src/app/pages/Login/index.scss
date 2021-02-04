@@ -1,0 +1,47 @@
+@import "../../../variables";
+
+.login-main {
+  background: $gray;
+  padding: 30px;
+  height: 68vh;
+  position: relative;
+}
+
+.login-form {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: gray;
+  width: 30%;
+  padding-top: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .login-form--button-box {
+    margin: 40px 0 15px;
+  }
+}
+
+.login-form--box {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  label {
+    margin: 20px 0 10px;
+    font-weight: bold;
+    font-size: larger;
+  }
+
+  input {
+    width: 100%;
+    font-size: 30px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+  }
+}

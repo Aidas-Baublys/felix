@@ -1,11 +1,15 @@
+import { Link } from "react-router-dom";
+
 import "./index.scss";
 
-export default function Button({ style, onClick, isSelected, children }) {
+export default function Button({ style, isSelected, onClick, to, children }) {
   const className = style ? `button--${style}` : "button";
+  const selected = isSelected ? isSelected : "";
+  const Component = to ? Link : "button";
 
   return (
-    <button onClick={onClick} className={`${className} ${isSelected}`}>
+    <Component onClick={onClick} className={`${className}${selected}`} to={to}>
       {children}
-    </button>
+    </Component>
   );
 }

@@ -1,14 +1,6 @@
 @import "../variables";
 
 .App {
-  background-color: $gray;
+  background-color: $black;
   text-align: center;
-}
-
-.movie-box {
-  padding: 48px 55px;
-  gap: 48px 100px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }

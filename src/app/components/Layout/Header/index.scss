@@ -6,11 +6,15 @@
   align-items: center;
   padding: 10px 20px;
   height: 70px;
-  background: black;
+  background: $black;
 }
 
 .logo {
-  color: #d22f27;
   font-size: xx-large;
   font-weight: bold;
+}
+
+a {
+  color: $red;
+  text-decoration: none;
 }

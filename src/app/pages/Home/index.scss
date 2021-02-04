@@ -1,0 +1,13 @@
+@import "../../../variables";
+
+.movie-box {
+  padding: 48px 55px;
+  gap: 48px 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-box {
+  margin: 32px 40px 80px;
+}
