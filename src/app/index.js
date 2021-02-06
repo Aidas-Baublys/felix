@@ -35,9 +35,7 @@ export default class App extends Component {
                 toggleFavorite={this.toggleFavorite}
               />
             </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
+            <Route exact path="/login" component={Login} />
           </Switch>
         </Layout>
       </Router>

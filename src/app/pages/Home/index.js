@@ -38,14 +38,17 @@ export default class Home extends Component {
   }
 
   render() {
+    const isLogedIn = !!localStorage.getItem("felixAuthToken");
     const { isLoading, error, movies } = this.state;
     const { favorites, toggleFavorite } = this.props;
 
     return (
       <main>
-        <Hero title="MORE BINGE?">
-          <Button to="/login">Get Access</Button>
-        </Hero>
+        {!isLogedIn && (
+          <Hero title="MORE BINGE?">
+            <Button to="/login">Get Access</Button>
+          </Hero>
+        )}
         <section className="movie-box">
           {isLoading && <p>Loading...</p>}
           {error && <p>{error}</p>}
@@ -67,9 +70,11 @@ export default class Home extends Component {
             </ContentBox>
           ))}
         </section>
-        <div className="button-box">
-          <Button to="/login">More Binge</Button>
-        </div>
+        {!isLogedIn && (
+          <div className="button-box">
+            <Button to="/login">More Binge</Button>
+          </div>
+        )}
       </main>
     );
   }

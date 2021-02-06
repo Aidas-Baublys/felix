@@ -23,9 +23,10 @@
   .login-form--error-message {
     width: 100%;
     color: $red;
+    font-weight: bold;
     position: absolute;
     top: 73%;
-    left: 39%;
+    left: 41%;
     transform: translate(-50%, -50%);
   }
 

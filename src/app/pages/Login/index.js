@@ -29,12 +29,11 @@ export default class Login extends Component {
         throw new Error(response.status);
       })
       .then((data) => {
-        console.log(data);
-        // localStorage.setItem("token", data.token);
-        // history.replace("/movies");
+        localStorage.setItem("felixAuthToken", data.token);
+        this.props.history.replace("/");
+        console.log(this.props);
       })
       .catch((e) => {
-        console.log(e);
         this.setState({ error: "Wrong username or password (⊙ˍ⊙)" });
       });
   };
