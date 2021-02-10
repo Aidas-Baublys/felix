@@ -1,19 +1,17 @@
-import { Component } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 import { Hero, Button, ContentBox } from "../../components";
 
 import "./index.scss";
 
-export default class Home extends Component {
-  state = {
-    isLoading: false,
-    error: null,
-    movies: [],
-  };
+export default function Home({ favorites, toggleFavorite }) {
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  async componentDidMount() {
+  const getMovies = useCallback(async () => {
     try {
-      this.setState({ isLoading: true });
+      setLoading(true);
 
       const response = await fetch(
         "https://academy-video-api.herokuapp.com/content/free-items"
@@ -29,53 +27,49 @@ export default class Home extends Component {
         throw new Error(error);
       }
 
-      this.setState({ movies: json });
+      setMovies(json);
     } catch (e) {
-      this.setState({ error: e.message });
+      setError(e.message);
     } finally {
-      this.setState({ isLoading: false });
+      setLoading(false);
     }
-  }
+  }, []);
 
-  render() {
-    const isLogedIn = !!localStorage.getItem("felixAuthToken");
-    const { isLoading, error, movies } = this.state;
-    const { favorites, toggleFavorite } = this.props;
+  useEffect(() => {
+    getMovies();
+  }, [getMovies]);
 
-    return (
-      <main>
-        {!isLogedIn && (
-          <Hero title="MORE BINGE?">
-            <Button to="/login">Get Access</Button>
-          </Hero>
-        )}
-        <section className="movie-box">
-          {isLoading && <p>Loading...</p>}
-          {error && <p>{error}</p>}
-          {movies.map(({ id, image, title, description }) => (
-            <ContentBox
-              key={id}
-              poster={image}
-              title={title}
-              description={description}
+  return (
+    <main>
+      <Hero title="MORE BINGE?">
+        <Button to="/login">Get Access</Button>
+      </Hero>
+
+      <section className="movie-box">
+        {loading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+        {movies.map(({ id, image, title, description }) => (
+          <ContentBox
+            key={id}
+            poster={image}
+            title={title}
+            description={description}
+          >
+            <Button
+              onClick={() => {
+                toggleFavorite(id);
+              }}
+              isSelected={favorites.includes(id) ? " selected" : ""}
             >
-              <Button
-                onClick={() => {
-                  toggleFavorite(id);
-                }}
-                isSelected={favorites.includes(id) ? " selected" : ""}
-              >
-                {favorites.includes(id) ? "Remove" : "Favorite"}
-              </Button>
-            </ContentBox>
-          ))}
-        </section>
-        {!isLogedIn && (
-          <div className="button-box">
-            <Button to="/login">More Binge</Button>
-          </div>
-        )}
-      </main>
-    );
-  }
+              {favorites.includes(id) ? "Remove" : "Favorite"}
+            </Button>
+          </ContentBox>
+        ))}
+      </section>
+
+      <div className="button-box">
+        <Button to="/login">More Binge</Button>
+      </div>
+    </main>
+  );
 }

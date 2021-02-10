@@ -20,14 +20,22 @@
   flex-direction: column;
   align-items: center;
 
-  .login-form--error-message {
+  @mixin message($left) {
     width: 100%;
     color: $red;
     font-weight: bold;
     position: absolute;
     top: 73%;
-    left: 41%;
+    left: $left;
     transform: translate(-50%, -50%);
+  }
+
+  .login-form--loading {
+    @include message(18%);
+  }
+
+  .login-form--error-message {
+    @include message(41%);
   }
 
   .login-form--button-box {
