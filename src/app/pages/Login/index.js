@@ -14,6 +14,7 @@ export default function Login() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+
     try {
       setLoading(true);
 
@@ -40,11 +41,11 @@ export default function Login() {
       }
 
       localStorage.setItem("felixAuthToken", json.token);
+      setLoading(false);
       history.replace("/");
     } catch (e) {
-      setError(e.message);
-    } finally {
       setLoading(false);
+      setError(e.message);
     }
   };
 

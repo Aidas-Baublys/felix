@@ -1,43 +1,19 @@
-import { useState, useCallback, useEffect } from "react";
+import { useRef } from "react";
 
 import { Hero, Button, ContentBox } from "../../components";
+import useFetch from "../../hooks/useFetch";
 
 import "./index.scss";
 
 export default function Home({ favorites, toggleFavorite }) {
-  const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const fetchOptions = useRef({
+    headers: { "Content-Type": "application/json" },
+  });
 
-  const getMovies = useCallback(async () => {
-    try {
-      setLoading(true);
-
-      const response = await fetch(
-        "https://academy-video-api.herokuapp.com/content/free-items"
-      );
-
-      const json = await response.json();
-
-      if (!response.ok) {
-        const error =
-          { 404: "It's gone... 🐱‍👤" }[response.status] ||
-          "Something went horribly wrong ☢";
-
-        throw new Error(error);
-      }
-
-      setMovies(json);
-    } catch (e) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    getMovies();
-  }, [getMovies]);
+  const { loading, error, payload: movies = [] } = useFetch(
+    "https://academy-video-api.herokuapp.com/content/free-items",
+    fetchOptions.current
+  );
 
   return (
     <main>

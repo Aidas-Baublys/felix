@@ -1,6 +1,6 @@
-import { Button } from "../../../components";
-
 import { Link } from "react-router-dom";
+
+import { Button } from "../../../components";
 
 import "./index.scss";
 
