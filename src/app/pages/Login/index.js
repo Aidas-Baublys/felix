@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { Button } from "../../components";
 
 import "./index.scss";
 
-export default function Login() {
+function Login({ saveTokenToState }) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState(null);
@@ -41,6 +42,7 @@ export default function Login() {
       }
 
       localStorage.setItem("felixAuthToken", json.token);
+      saveTokenToState(json.token);
       setLoading(false);
       history.replace("/");
     } catch (e) {
@@ -79,3 +81,12 @@ export default function Login() {
     </main>
   );
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    saveTokenToState: (token) =>
+      dispatch({ type: "login-success", token: token }),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(Login);

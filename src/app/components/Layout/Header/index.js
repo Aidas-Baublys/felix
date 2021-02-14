@@ -1,14 +1,11 @@
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import { Button } from "../../../components";
 
 import "./index.scss";
 
-function logOut() {
-  localStorage.removeItem("felixAuthToken");
-}
-
-export default function Header({ isLogedIn }) {
+function Header({ isLogedIn, logOut }) {
   return (
     <nav className="nav">
       <div className="logo">
@@ -26,3 +23,15 @@ export default function Header({ isLogedIn }) {
     </nav>
   );
 }
+
+function mapStateToProps(state) {
+  return { isLogedIn: state.auth.isLogedIn };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    logOut: () => dispatch({ type: "logout" }),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

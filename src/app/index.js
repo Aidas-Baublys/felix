@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
 
+import store from "./store";
 import { Layout } from "./components";
 import { Home, Login } from "./pages";
 
@@ -18,15 +20,17 @@ export default function App() {
   };
 
   return (
-    <Router>
-      <Layout>
-        <Switch>
-          <Route exact path="/">
-            <Home favorites={favorites} toggleFavorite={toggleFavorite} />
-          </Route>
-          <Route exact path="/login" component={Login} />
-        </Switch>
-      </Layout>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <Home favorites={favorites} toggleFavorite={toggleFavorite} />
+            </Route>
+            <Route exact path="/login" component={Login} />
+          </Switch>
+        </Layout>
+      </Router>
+    </Provider>
   );
 }
