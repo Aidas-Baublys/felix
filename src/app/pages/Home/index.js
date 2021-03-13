@@ -1,11 +1,12 @@
 import { useRef } from "react";
+import { connect } from "react-redux";
 
 import { Hero, Button, ContentBox } from "../../components";
 import useFetch from "../../hooks/useFetch";
 
 import "./index.scss";
 
-export default function Home({ favorites, toggleFavorite }) {
+function Home({ isLogedin, favorites, toggleFavorite }) {
   const fetchOptions = useRef({
     headers: { "Content-Type": "application/json" },
   });
@@ -17,10 +18,11 @@ export default function Home({ favorites, toggleFavorite }) {
 
   return (
     <main>
-      <Hero title="MORE BINGE?">
-        <Button to="/login">Get Access</Button>
-      </Hero>
-
+      {!isLogedin && (
+        <Hero title="MORE BINGE?">
+          <Button to="/login">Get Access</Button>
+        </Hero>
+      )}
       <section className="movie-box">
         {loading && <p>Loading...</p>}
         {error && <p>{error}</p>}
@@ -42,10 +44,17 @@ export default function Home({ favorites, toggleFavorite }) {
           </ContentBox>
         ))}
       </section>
-
-      <div className="button-box">
-        <Button to="/login">More Binge</Button>
-      </div>
+      {!isLogedin && (
+        <div className="button-box">
+          <Button to="/login">More Binge</Button>
+        </div>
+      )}
     </main>
   );
 }
+
+function mapStateToProps(state) {
+  return { isLogedin: state.auth.isLogedin };
+}
+
+export default connect(mapStateToProps, null)(Home);

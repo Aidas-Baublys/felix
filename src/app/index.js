@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
-
 import store from "./store";
-import { Layout } from "./components";
-import { Home, Login } from "./pages";
+
+import { Layout, PrivateRoute } from "./components";
+import { Home, Login, SingleContentItem } from "./pages";
 
 import "./index.scss";
 
@@ -28,6 +28,7 @@ export default function App() {
               <Home favorites={favorites} toggleFavorite={toggleFavorite} />
             </Route>
             <Route exact path="/login" component={Login} />
+            <PrivateRoute exact path="/movies" component={SingleContentItem} />
           </Switch>
         </Layout>
       </Router>

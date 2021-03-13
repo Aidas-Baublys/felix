@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import "./index.scss";
 
 export default function ContentBox({
@@ -13,7 +15,9 @@ export default function ContentBox({
   return (
     <article className="movie-card">
       <div className="movie-card--box">
-        <img className="movie-card--img" src={url} alt={`${title} movie`} />
+        <Link to="/movies">
+          <img className="movie-card--img" src={url} alt={`${title} movie`} />
+        </Link>
         <h2 className="movie-card--name">{title}</h2>
         <p className="movie-card--description">{description}</p>
       </div>

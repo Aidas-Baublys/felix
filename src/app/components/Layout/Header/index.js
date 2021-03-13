@@ -5,14 +5,14 @@ import { Button } from "../../../components";
 
 import "./index.scss";
 
-function Header({ isLogedIn, logOut }) {
+function Header({ isLogedin, logOut }) {
   return (
     <nav className="nav">
       <div className="logo">
         <Link to="/">F</Link>
       </div>
       <div>
-        {isLogedIn ? (
+        {isLogedin ? (
           <Button onClick={logOut} to="/">
             Log Out
           </Button>
@@ -25,7 +25,7 @@ function Header({ isLogedIn, logOut }) {
 }
 
 function mapStateToProps(state) {
-  return { isLogedIn: state.auth.isLogedIn };
+  return { isLogedin: state.auth.isLogedin };
 }
 
 function mapDispatchToProps(dispatch) {
