@@ -1,11 +1,11 @@
 import { Route, Redirect, useLocation } from "react-router-dom";
 import { connect } from "react-redux";
 
-function PrivateRoute({ isLogedin, props, component }) {
+function PrivateRoute({ isLogedin, ...props }) {
   const location = useLocation();
 
   if (isLogedin) {
-    return <Route {...props} component={component} />;
+    return <Route {...props} />;
   }
 
   return (
@@ -22,4 +22,4 @@ function mapStateToProps(state) {
   return { isLogedin: state.auth.isLogedin };
 }
 
-export default connect(mapStateToProps, null)(PrivateRoute);
+export default connect(mapStateToProps)(PrivateRoute);

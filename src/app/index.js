@@ -28,7 +28,12 @@ export default function App() {
               <Home favorites={favorites} toggleFavorite={toggleFavorite} />
             </Route>
             <Route exact path="/login" component={Login} />
-            <PrivateRoute exact path="/movies" component={SingleContentItem} />
+            <PrivateRoute exact path="/movies/:id">
+              <SingleContentItem
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
+            </PrivateRoute>
           </Switch>
         </Layout>
       </Router>

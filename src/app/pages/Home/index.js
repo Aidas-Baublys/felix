@@ -29,6 +29,7 @@ function Home({ isLogedin, favorites, toggleFavorite }) {
         {movies.map(({ id, image, title, description }) => (
           <ContentBox
             key={id}
+            id={id}
             poster={image}
             title={title}
             description={description}
