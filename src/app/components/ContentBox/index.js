@@ -4,13 +4,13 @@ import "./index.scss";
 
 export default function ContentBox({
   id,
-  poster,
+  image,
   title = "Good movie",
   description = "Pizda koks good movie",
   children,
 }) {
-  const url = poster
-    ? poster
+  const url = image
+    ? image
     : "https://images.unsplash.com/photo-1518043129420-ed9d4efcdcc9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1054&q=80";
 
   return (

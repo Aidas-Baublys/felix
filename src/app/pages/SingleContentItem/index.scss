@@ -1,13 +1,64 @@
 @import "../../../variables";
 
-.movie-box {
-  padding: 48px 55px;
-  gap: 48px 100px;
+.single-item--box {
+  height: 58vh;
+  padding: 40px 5% 95px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  position: relative;
 }
 
-.button-box {
-  margin: 32px 40px 80px;
+.single-item--img {
+  width: 22%;
+}
+
+.single-item {
+  color: $white;
+  height: 35%;
+  margin: 0 3% 0 4%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.single-item--name {
+  font-weight: bolder;
+  font-size: xx-large;
+}
+
+.single-item--description {
+  margin: 25px 0;
+  line-height: normal;
+}
+
+.single-item--button-box {
+  width: 27%;
+  display: flex;
+  justify-content: space-between;
+}
+
+iframe {
+  width: 120vh;
+  height: calc(120vh / 16 * 9);
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+@media (min-aspect-ratio: 3/4) {
+  width: 80vw;
+  height: calc(80vw / 16 * 9);
+}
+
+.blur {
+  height: 129vh;
+  width: 100%;
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(5px);
 }

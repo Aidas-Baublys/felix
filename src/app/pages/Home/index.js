@@ -6,7 +6,7 @@ import useFetch from "../../hooks/useFetch";
 
 import "./index.scss";
 
-function Home({ isLogedin, favorites, toggleFavorite }) {
+function Home({ isLogedin, toggleFavorite, favorites }) {
   const fetchOptions = useRef({
     headers: { "Content-Type": "application/json" },
   });
@@ -30,7 +30,7 @@ function Home({ isLogedin, favorites, toggleFavorite }) {
           <ContentBox
             key={id}
             id={id}
-            poster={image}
+            image={image}
             title={title}
             description={description}
           >
@@ -58,4 +58,4 @@ function mapStateToProps(state) {
   return { isLogedin: state.auth.isLogedin };
 }
 
-export default connect(mapStateToProps, null)(Home);
+export default connect(mapStateToProps)(Home);
