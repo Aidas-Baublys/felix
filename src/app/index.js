@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import { Layout, PrivateRoute } from "./components";
-import { Home, Login, SingleContentItem } from "./pages";
+import { Home, Login, SignUp, SingleContentItem } from "./pages";
 
 import "./index.scss";
 
@@ -28,6 +28,7 @@ export default function App() {
               <Home favorites={favorites} toggleFavorite={toggleFavorite} />
             </Route>
             <Route exact path="/login" component={Login} />
+            <Route path="/signup" component={SignUp} />
             <PrivateRoute exact path="/movies/:id">
               <SingleContentItem
                 favorites={favorites}

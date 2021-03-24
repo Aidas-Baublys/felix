@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { Button } from "../../components";
@@ -11,6 +11,7 @@ function Login({ saveTokenToState }) {
   const [password, setPassword] = useState();
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
   const history = useHistory();
 
   const onSubmit = async (e) => {
@@ -44,7 +45,9 @@ function Login({ saveTokenToState }) {
       localStorage.setItem("felixAuthToken", json.token);
       saveTokenToState(json.token);
       setLoading(false);
-      history.replace("/");
+      !!location.state?.initialRoute
+        ? history.replace(location.state.initialRoute)
+        : history.replace("/");
     } catch (e) {
       setLoading(false);
       setError(e.message);

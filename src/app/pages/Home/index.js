@@ -20,7 +20,7 @@ function Home({ isLogedin, toggleFavorite, favorites }) {
     <main>
       {!isLogedin && (
         <Hero title="MORE BINGE?">
-          <Button to="/login">Get Access</Button>
+          <Button to="/signup/user">Get Access</Button>
         </Hero>
       )}
       <section className="movie-box">
@@ -47,7 +47,7 @@ function Home({ isLogedin, toggleFavorite, favorites }) {
       </section>
       {!isLogedin && (
         <div className="button-box">
-          <Button to="/login">More Binge</Button>
+          <Button to="/signup/user">More Binge</Button>
         </div>
       )}
     </main>

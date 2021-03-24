@@ -1,6 +1,6 @@
 @import "../../../variables";
 
-@mixin button($margin) {
+@mixin button {
   background: $red;
   color: $white;
   border-radius: 4px;
@@ -9,11 +9,10 @@
   font-weight: bold;
   text-decoration: none;
   border: 1px solid $red;
-  margin: $margin;
 }
 
 .button {
-  @include button(0);
+  @include button;
 }
 
 .selected {

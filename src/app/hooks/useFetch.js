@@ -19,12 +19,11 @@ export default function useFetch(url, fetchOptions) {
 
         throw new Error(error);
       }
-
+      setLoading(false);
       setPayload(json);
     } catch (e) {
-      setError(e.message);
-    } finally {
       setLoading(false);
+      setError(e.message);
     }
   }, [url, fetchOptions]);
 

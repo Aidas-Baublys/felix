@@ -7,7 +7,7 @@ import useFetch from "../../hooks/useFetch";
 import "./index.scss";
 
 export default function SingleContentItem({ toggleFavorite, favorites }) {
-  const [display = false, setDisplay] = useState();
+  const [modal, setModal] = useState(false);
   const { id } = useParams();
   const fetchOptions = useRef({
     headers: { "Content-Type": "application/json" },
@@ -24,7 +24,7 @@ export default function SingleContentItem({ toggleFavorite, favorites }) {
     : "https://images.unsplash.com/photo-1518043129420-ed9d4efcdcc9?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1054&q=80";
 
   return (
-    <section className="single-item--box">
+    <main className="single-item--box">
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       <img className="single-item--img" src={url} alt={`${title} movie`} />
@@ -34,7 +34,7 @@ export default function SingleContentItem({ toggleFavorite, favorites }) {
         <div className="single-item--button-box">
           <Button
             onClick={() => {
-              setDisplay(true);
+              setModal(true);
             }}
           >
             Watch
@@ -49,9 +49,13 @@ export default function SingleContentItem({ toggleFavorite, favorites }) {
           </Button>
         </div>
       </aside>
-      {display && (
+      {modal && (
         <>
           <iframe
+            // Cant complete video load, only after refresh.
+            // Repeats after logout/login.
+            // Console error: Because a cookie’s SameSite attribute was not set or is invalid...
+            // How to set cookie?
             src={video}
             title={`${title} movie trailer`}
             frameBorder="0"
@@ -60,11 +64,11 @@ export default function SingleContentItem({ toggleFavorite, favorites }) {
           <article
             className="blur"
             onClick={() => {
-              setDisplay(false);
+              setModal(false);
             }}
           />
         </>
       )}
-    </section>
+    </main>
   );
 }
